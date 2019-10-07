@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <header>
+    <nav
+      class="navbar navbar-expand-md navbar-dark sticky-top"
+      style=" background-color: #198532"
+    >
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/index.html"
+              >Főoldal<span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/resztvevok.html">Résztvevők</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sorok.html">Sörök</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div class="container pt-5"><h2>Sör szerkesztése</h2></div>
+  <div class="conatiner pt-5 pl-5">
+    <form>
+      <div class="form-group row">
+        <label for="inputNev" type="text" class="col-sm-2 col-form-label"
+          >Név</label
+        >
+        <div class="col-sm-5">
+          <input class="form-control" id="inputNev" placeholder="Név" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputFajta" type="text" class="col-sm-2 col-form-label"
+          >Fajta</label
+        >
+        <div class="col-sm-5">
+          <input class="form-control" id="inputFajta" placeholder="Fajta" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="gyartoSelect" class="col-sm-2 col-form-label">Gyártó</label>
+        <div class="col-sm-5">
+          <select class="form-control" id="gyartoSelect">
+            <option>Borsodi sörgyár</option>
+            <option>Heineken Magyarország</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAlkohol" type="number" class="col-sm-2 col-form-label"
+          >Alkoholtartalom</label
+        >
+        <div class="col-sm-5">
+          <input
+            class="form-control"
+            id="inputAlkohol"
+            placeholder="Alkoholtartalom"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputTerfogat" type="text" class="col-sm-2 col-form-label"
+          >Térfogat</label
+        >
+        <div class="col-sm-5">
+          <input
+            class="form-control"
+            id="inputTerfogat"
+            placeholder="Térfogat"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputOsszetevok" type="text" class="col-sm-2 col-form-label"
+          >Összetevők</label
+        >
+        <div class="col-sm-5">
+          <input
+            class="form-control"
+            id="inputOsszetevok"
+            placeholder="Összetevők"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="container pt-5">
+    <a href="/sorok.html" type="button" class="btn btn-primary">
+      Mentés
+    </a>
+  </div>
+</html>
