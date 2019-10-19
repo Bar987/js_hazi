@@ -1,8 +1,10 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-app.use(express.static('static'));
+app.use(express.static("static"));
 
 app.listen(3000, function() {
-    console.log('Hello :3000');
+  console.log("Hello :3000");
 });
+
+require("./route/index")(app);
