@@ -1,0 +1,47 @@
+<%- include('header') -%>
+<div class="container pt-5">
+  <a href="/resztvevo/new" type="button" class="btn btn-primary">
+    Új résztvevő hozzáadása
+  </a>
+</div>
+
+<div class="container pt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Név</th>
+        <th scope="col">Lakhely</th>
+        <th scope="col">Kor</th>
+        <th scope="col">Végzettség</th>
+        <th scope="col">Kedvenc sör</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">Kovács József</td>
+        <td>Budapest</td>
+        <td>40</td>
+        <td>felsőfok</td>
+        <td><a href="/sorok/sor/view/:sorid">Soproni</a><br /></td>
+        <td>
+          <a href="/resztvevo/edit/:resztvevoid"><i class="fas fa-pen-square p-3"></i></a><i
+            class="fas fa-trash-alt"></i>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">Tóth Antal</td>
+        <td>Miskolc</td>
+        <td>24</td>
+        <td>középfok</td>
+        <td><a href="/sorok/sor/view/:sorid">Kőbányai világos</a><br /></td>
+        <td>
+          <a href="/resztvevo/edit/:resztvevoid"><i class="fas fa-pen-square p-3"></i></a><i
+            class="fas fa-trash-alt"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<%- include('pictogram') -%>
+<%- include('footer') -%>

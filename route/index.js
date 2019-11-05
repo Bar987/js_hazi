@@ -12,7 +12,7 @@ const getSorgyarMW = require("../middleware/sorgyar/getSorgyarMW");
 const saveSorgyarMW = require("../middleware/sorgyar/saveSorgyarMW");
 const delSorgyarMW = require("../middleware/sorgyar/delSorgyarMW");
 
-module.exports = function(app) {
+module.exports = function (app) {
   const objRepo = {};
 
   app.get("/", getChartDataMW(objRepo), renderMW(objRepo, "index"));
@@ -44,7 +44,7 @@ module.exports = function(app) {
 
   app.get("/sorok", getSorokMW(objRepo), renderMW(objRepo, "sorok"));
 
-  app.get("/sorok/sor/:sorid", getSorMW(objRepo), renderMW(objRepo, "sor"));
+
 
   app.use("/sorok/sor/new", saveSorMW(objRepo), renderMW(objRepo, "szerksor"));
 
@@ -55,10 +55,12 @@ module.exports = function(app) {
     renderMW(objRepo, "szerksor")
   );
 
+  app.get("/sorok/sor/view/:sorid", getSorMW(objRepo), renderMW(objRepo, "sor"));
+
   app.get("/sorok/sor/del/:sorid", getSorMW(objRepo), delSorMW(objRepo));
 
   app.get(
-    "/sorok/sorgyar/:sorgyarid",
+    "/sorok/sorgyar/view/:sorgyarid",
     getSorgyarMW(objRepo),
     renderMW(objRepo, "sorgyar")
   );
