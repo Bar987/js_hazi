@@ -1,25 +1,27 @@
 <%- include('header') -%>
 <div class="container pt-5">
-	<h2>
-		<%= sorgyar.nev %><a href="/sorok/sorgyar/edit/<%= sorgyar._id %>"
-			><i class="fas fa-pen-square p-3"></i></a
-		><a href="/sorok/sorgyar/del/<%= sorgyar._id %>"
-			><i class="fas fa-trash-alt"></i
-		></a>
-	</h2>
+  <h2>
+    Sörgyártó neve<a href="/sorok/sorgyar/edit/:sorgyarid"><i class="fas fa-pen-square p-3"></i></a><i
+      class="fas fa-trash-alt"></i>
+  </h2>
 </div>
 <div class="container pt-5">
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Telephely</th>
-				<td><%= sorgyar.telephely %></td>
-			</tr>
-			<tr>
-				<th>Éves bevétel</th>
-				<td><%= sorgyar.bevetel %> Ft</td>
-			</tr>
-		</tbody>
-	</table>
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Telephely</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Éves bevétel</th>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Gyártott sörök</th>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-<%- include('pictogram') -%> <%- include('footer') -%>
+<%- include('pictogram') -%>
+<%- include('footer') -%>
