@@ -1,26 +1,38 @@
 <%- include('header') -%>
 <div class="container pt-5">
-  <h2>
-    Sör neve<a href="/sorok/sor/edit/:sorid"><i class="fas fa-pen-square p-3"></i></a><i class="fas fa-trash-alt"></i>
-  </h2>
+	<h2>
+		<%= sor.nev %><a href="/sorok/sor/edit/<%= sor._id %>"
+			><i class="fas fa-pen-square p-3"></i></a
+		><a href="/sorok/sor/del/<%= sor._id %>"
+			><i class="fas fa-trash-alt"></i
+		></a>
+	</h2>
 </div>
 <div class="container pt-5">
-  <table class="table">
-    <tbody>
-      <tr>
-        <th>Telephely</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Éves bevétel</th>
-        <td></td>
-      </tr>
-      <tr>
-        <th>Gyártott sörök</th>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Gyártó</th>
+
+				<td>
+					<% sorgyarak.forEach(function(sorgyar) {
+					if(sorgyar._id.equals(sor._gyarto._id)) { %> <%= sorgyar.nev
+					%> <% }else{ %><% } %> <% }); %>
+				</td>
+			</tr>
+			<tr>
+				<th>Alkoholtartalom</th>
+				<td><%= sor.alkohol %> %</td>
+			</tr>
+			<tr>
+				<th>Térfogat</th>
+				<td><%= sor.terfogat %> dl</td>
+			</tr>
+			<tr>
+				<th>Összetevők</th>
+				<td><%= sor.osszetevok %></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
-<%- include('pictogram') -%>
-<%- include('footer') -%>
+<%- include('pictogram') -%> <%- include('footer') -%>

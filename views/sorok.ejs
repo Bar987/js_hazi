@@ -1,35 +1,42 @@
 <%- include('header') -%>
 <div class="container pt-5">
-  <a href="/sorok/sorgyar/new" type="button" class="btn btn-primary mr-3">
-    Új sörgyár hozzáadása </a><a href="/sorok/sor/new" type="button" class="btn btn-primary">
-    Új sör hozzáadása
-  </a>
+	<a href="/sorok/sorgyar/new" type="button" class="btn btn-primary mr-3">
+		Új sörgyár hozzáadása </a
+	><a href="/sorok/sor/new" type="button" class="btn btn-primary">
+		Új sör hozzáadása
+	</a>
 </div>
 <div class="container pt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Név</th>
-        <th scope="col">Sörök</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td scope="row"><a href="/sorok/sorgyar/view/:sorgyarid">Heineken Magyarország</a></td>
-        <td>
-          <a href="/sorok/sor/view/:sorid">Soproni világos</a><br />
-          <a href="/sorok/sor/view/:sorid">Heineken</a><br />
-          <a href="/sorok/sor/view/:sorid">Krusovice barna</a>
-        </td>
-      </tr>
-      <tr>
-        <td scope="row"><a href="/sorok/sorgyar/view/:sorgyarid">Borsodi sörgyár</a></td>
-        <td>
-          <a href="/sorok/sor/view/:sorid">Borsodi világos</a><br />
-          <a href="/sorok/sor/view/:sorid">Staropramen világos</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Név</th>
+				<th scope="col">Sörök</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% sorgyarak.forEach(function(sorgyar){ %>
+			<tr>
+				<td scope="row">
+					<a href="/sorok/sorgyar/view/<%= sorgyar._id %>"
+						><%= sorgyar.nev %></a
+					>
+				</td>
+				<td>
+					<% sorok.forEach(function(sor){ %> <%
+					if(sor._gyarto._id.equals(sorgyar._id)) { %>
+					<a href="/sorok/sor/view/<%= sor._id %>"><%= sor.nev %></a
+					><br />
+					<% }else{ %><% } %> <% }); %>
+				</td>
+				<td>
+					<a href="/sorok/sorgyar/edit/<%= sorgyar._id %>"
+						><i class="fas fa-pen-square p-3"></i></a
+					><i class="fas fa-trash-alt"></i>
+				</td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
 </div>
 <%- include('footer') -%>
