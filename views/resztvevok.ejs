@@ -1,47 +1,47 @@
 <%- include('header') -%>
 <div class="container pt-5">
-  <a href="/resztvevo/new" type="button" class="btn btn-primary">
-    Új résztvevő hozzáadása
-  </a>
+	<a href="/resztvevo/new" type="button" class="btn btn-primary">
+		Új résztvevő hozzáadása
+	</a>
 </div>
 
 <div class="container pt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Név</th>
-        <th scope="col">Lakhely</th>
-        <th scope="col">Kor</th>
-        <th scope="col">Végzettség</th>
-        <th scope="col">Kedvenc sör</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td scope="row">Kovács József</td>
-        <td>Budapest</td>
-        <td>40</td>
-        <td>felsőfok</td>
-        <td><a href="/sorok/sor/view/:sorid">Soproni</a><br /></td>
-        <td>
-          <a href="/resztvevo/edit/:resztvevoid"><i class="fas fa-pen-square p-3"></i></a><i
-            class="fas fa-trash-alt"></i>
-        </td>
-      </tr>
-      <tr>
-        <td scope="row">Tóth Antal</td>
-        <td>Miskolc</td>
-        <td>24</td>
-        <td>középfok</td>
-        <td><a href="/sorok/sor/view/:sorid">Kőbányai világos</a><br /></td>
-        <td>
-          <a href="/resztvevo/edit/:resztvevoid"><i class="fas fa-pen-square p-3"></i></a><i
-            class="fas fa-trash-alt"></i>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">Név</th>
+				<th scope="col">Lakhely</th>
+				<th scope="col">Kor</th>
+				<th scope="col">Végzettség</th>
+				<th scope="col">Kedvenc sör</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% resztvevok.forEach(function(resztvevo){ %>
+			<tr>
+				<td scope="row"><%= resztvevo.nev %></td>
+				<td><%= resztvevo.lakhely %></td>
+				<td><%= resztvevo.kor %></td>
+				<td><%= resztvevo.vegzettseg %></td>
+				<td>
+					<% sorok.forEach(function(sor) {
+					if(sor._id.equals(resztvevo._kedvenc._id)) { %>
+					<a href="/sorok/sor/view/<%= resztvevo._kedvenc._id %>">
+						<%= sor.nev %> </a
+					><br />
+					<% }else{ %><% } %> <% }); %>
+				</td>
+				<td>
+					<a href="/resztvevo/edit/<%= resztvevo._id %>"
+						><i class="fas fa-pen-square p-3"></i></a
+					><a href="/resztvevo/del/<%= resztvevo._id %>"
+						><i class="fas fa-trash-alt"></i
+					></a>
+				</td>
+			</tr>
+			<% }); %>
+		</tbody>
+	</table>
 </div>
-<%- include('pictogram') -%>
-<%- include('footer') -%>
+<%- include('pictogram') -%> <%- include('footer') -%>
