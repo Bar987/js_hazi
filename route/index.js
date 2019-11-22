@@ -1,5 +1,4 @@
 const renderMW = require('../middleware/renderMW');
-const getChartDataMW = require('../middleware/getChartDataMW');
 const getResztvevokMW = require('../middleware/resztvevo/getResztvevokMW');
 const getResztvevoMW = require('../middleware/resztvevo/getResztvevoMW');
 const saveResztvevoMW = require('../middleware/resztvevo/saveResztvevoMW');
@@ -12,6 +11,9 @@ const saveSorgyarMW = require('../middleware/sorgyar/saveSorgyarMW');
 const delSorgyarMW = require('../middleware/sorgyar/delSorgyarMW');
 const getSorgyarakMW = require('../middleware/sorgyar/getSorgyarakMW');
 const getSorokMW = require('../middleware/sor/getSorokMW');
+const getChartDataMW = require('../middleware/getChartDataMW');
+const getEachSorNumMW = require('../middleware/sor/getEachSorNumMW');
+const getEachSorgyarNumMW = require('../middleware/sorgyar/getEachSorgyarNumMW');
 
 const SorModel = require('../models/sor');
 const ResztvevoModel = require('../models/resztvevo');
@@ -23,22 +25,6 @@ module.exports = function(app) {
 		SorgyarModel: SorgyarModel,
 		ResztvevoModel: ResztvevoModel
 	};
-
-	app.get('/', getChartDataMW(objRepo), renderMW(objRepo, 'index'));
-
-	app.get(
-		'/resztvevo',
-		getResztvevokMW(objRepo),
-		getSorokMW(objRepo),
-		renderMW(objRepo, 'resztvevok')
-	);
-
-	app.use(
-		'/resztvevo/new',
-		saveResztvevoMW(objRepo),
-		getSorokMW(objRepo),
-		renderMW(objRepo, 'szerkresztvevo')
-	);
 
 	app.use(
 		'/resztvevo/edit/:resztvevoid',
@@ -54,11 +40,18 @@ module.exports = function(app) {
 		delResztvevoMW(objRepo)
 	);
 
-	app.get(
-		'/sorok',
-		getSorgyarakMW(objRepo),
+	app.use(
+		'/resztvevo/new',
+		saveResztvevoMW(objRepo),
 		getSorokMW(objRepo),
-		renderMW(objRepo, 'sorok')
+		renderMW(objRepo, 'szerkresztvevo')
+	);
+
+	app.get(
+		'/resztvevo',
+		getResztvevokMW(objRepo),
+		getSorokMW(objRepo),
+		renderMW(objRepo, 'resztvevok')
 	);
 
 	app.use(
@@ -108,5 +101,23 @@ module.exports = function(app) {
 		'/sorok/sorgyar/del/:sorgyarid',
 		getSorgyarMW(objRepo),
 		delSorgyarMW(objRepo)
+	);
+
+	app.get(
+		'/sorok',
+		getSorgyarakMW(objRepo),
+		getSorokMW(objRepo),
+		renderMW(objRepo, 'sorok')
+	);
+
+	app.get(
+		'/',
+		getResztvevokMW(objRepo),
+		getSorokMW(objRepo),
+		getSorgyarakMW(objRepo),
+		getEachSorNumMW(objRepo),
+		getEachSorgyarNumMW(objRepo),
+		getChartDataMW(objRepo),
+		renderMW(objRepo, 'index')
 	);
 };

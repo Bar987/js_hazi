@@ -10,7 +10,6 @@ app.use((err, req, res, next) => {
 	res.end('Error');
 	console.log(err);
 });
-
 require('./route/index')(app);
 
 app.listen(3000, function() {
